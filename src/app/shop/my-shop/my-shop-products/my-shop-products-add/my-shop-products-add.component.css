@@ -1,0 +1,84 @@
+.container {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #dfe1e5;
+  box-sizing: border-box;
+  padding: 24px 32px 24px 32px;
+  width: fit-content;
+}
+form {
+  width: 100%;
+}
+
+form > * {
+  margin-bottom: 1.5em;
+  width: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  .container {
+      margin: 0 auto;
+      width: fit-content;
+      background-color: #fff;
+      border-radius: 4px;
+      border: 1px solid #dfe1e5;
+      box-sizing: border-box;
+      padding: 24px 32px 24px 32px;
+  }
+}
+
+.app-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.app-full-width {
+  width: 100%;
+}
+
+.app-form-label {
+  width: 100%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+.example-viewport {
+  height: 200px;
+  width: 200px;
+  border: 1px solid black;
+}
+
+.example-item-detail {
+  height: 18px;
+}
+
+.example-alternate {
+  background: rgba(127, 127, 127, 0.3);
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

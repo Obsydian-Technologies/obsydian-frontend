@@ -1,0 +1,23 @@
+.app-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .app-full-width {
+    width: 100%;
+  }
+
+  .app-form-label {
+    width: 100%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+  }
+
+  td {
+    padding-right: 8px;
+  }
+
+  .example-form-field {
+    width: 200px;
+  }

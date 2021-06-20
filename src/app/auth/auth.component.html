@@ -1,0 +1,5 @@
+
+  <app-sign-up *ngIf="authFlow==='Sign Up'" [header]="dialogData.header" [seller]="dialogData.seller" (authFlow)="onAuthFlow($event)"></app-sign-up>
+  <app-sign-in *ngIf="authFlow==='Sign In'" [header]="dialogData.header" (authFlow)="onAuthFlow($event)"></app-sign-in>
+  <app-confirm-code *ngIf="authFlow==='confirm'" [header]="dialogData.header" (authFlow)="onAuthFlow($event)"></app-confirm-code>
+  <app-reset-password *ngIf="authFlow==='reset'" [header]="dialogData.header" (authFlow)="onAuthFlow($event)"></app-reset-password>

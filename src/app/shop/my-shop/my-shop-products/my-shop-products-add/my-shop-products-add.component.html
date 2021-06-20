@@ -1,0 +1,145 @@
+<div *ngIf="!loading" class="header-container" [class.header-is-mobile]="mobileQuery?.matches">
+  <!-- Web Header -->
+  <mat-toolbar style="background-color: white !important; background-color: #fff;
+  border-radius: 4px;
+  border-bottom: 1px solid #dfe1e5;
+  box-sizing: border-box;
+  padding: 24px 32px 24px 32px;
+  width: 100%;">
+    <!-- <div style="width: 100rem; max-width:100rem;margin-left:auto;margin-right: auto"> -->
+
+    <mat-horizontal-stepper linear #stepper style="max-width: 36rem; height: 70px; background-color: transparent;">
+      <mat-step [stepControl]="productDetailsForm">
+        <ng-template matStepLabel>Product Details</ng-template>
+      </mat-step>
+      <mat-step [stepControl]="additionalInfoForm">
+        <ng-template matStepLabel>Additional Information</ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Create</ng-template>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <!-- </div> -->
+  </mat-toolbar>
+</div>
+
+<div *ngIf="loading">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<section class="obsidian-section" style="height: 90vh !important;">
+  <span class="obsidian-span">
+    <div class="obsidian-div">
+      <div *ngIf="!loading && myStepper?.selectedIndex === 0" class="obsidian-container">
+        <h2>Add Product</h2>
+        <form class="app-form" [formGroup]="productDetailsForm" autocomplete="on">
+          <mat-form-field>
+            <input matInput placeholder="Product Category" type="text" formControlName="category" required />
+            <mat-hint *ngIf="!categoryInput.value">Enter Category</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Product SKU" type="text" formControlName="sku" required />
+            <mat-hint *ngIf="!skuInput.value">Enter Category</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Product Title/Name" type="text" formControlName="title" required />
+            <mat-hint *ngIf="!titleInput.value">Enter Product Title</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Description" type="text" formControlName="description" required />
+            <mat-hint *ngIf="!descriptionInput.value">Enter Category</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Short Description" type="text" formControlName="shortDescription" required />
+            <mat-hint *ngIf="!shortDescriptionInput.value">Enter Product Name</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Price" type="text" formControlName="price" required />
+            <mat-hint *ngIf="!priceInput.value">Enter Price</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Special Price" type="text" formControlName="specialPrice" required />
+            <mat-hint *ngIf="!specialPriceInput.value">Enter Special Price</mat-hint>
+          </mat-form-field>
+
+          <table class="app-form-label" cellspacing="0">
+            <tr class="text-center">
+              <td>
+                <button mat-raised-button color="primary" (click)="goForward()" [disabled]="!productDetailsForm.valid">
+                  Next
+                </button>
+              </td>
+            </tr>
+          </table>
+
+        </form>
+      </div>
+
+      <div *ngIf="!loading && myStepper?.selectedIndex === 1" class="obsidian-container">
+        <h2>Additional Product Information</h2>
+        <form class="app-form" [formGroup]="additionalInfoForm" autocomplete="on">
+          <mat-form-field>
+            <input matInput placeholder="Stock" type="text" formControlName="stock" required />
+            <mat-hint *ngIf="!stockInput.value">Enter Stock</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Stock Availability" type="text" formControlName="stockAvailability" required />
+            <mat-hint *ngIf="!stockAvailabilityInput.value">Enter Stock Availability</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Weight" type="text" formControlName="weight" required />
+            <mat-hint *ngIf="!weightInput.value">Enter Weight</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Allowed Per Customer" type="text" formControlName="allowedPerCustomer"
+              required />
+            <mat-hint *ngIf="!allowedPerCustomerInput.value">Enter Products Allowed Per Customer</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Colour" type="text" formControlName="colour" required />
+            <mat-hint *ngIf="!colourInput.value">Enter Colour</mat-hint>
+          </mat-form-field>
+
+          <table class="app-form-label" cellspacing="0">
+            <tr class="text-center">
+              <td>
+                <button mat-stroked-button color="primary" (click)="goBack()">Back</button>
+                &nbsp;
+                <button mat-raised-button color="primary" (click)="goForward()" [disabled]="!additionalInfoForm.valid">
+                  Next
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+
+      <div *ngIf="!loading && myStepper?.selectedIndex === 2" class="obsidian-container">
+        <h2>Preview And Create</h2>
+        <form class="app-form">
+          <table class="app-form-label" cellspacing="0">
+            <tr class="text-center">
+              <td>
+                <button mat-stroked-button color="primary" (click)="goBack()">Back</button>
+                &nbsp;
+                <button mat-raised-button color="primary" (click)="save()">
+                  Create
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </span>
+</section>

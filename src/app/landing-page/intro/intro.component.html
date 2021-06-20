@@ -1,0 +1,36 @@
+<section id="intro-one-section" class="home-intro-section text-center">
+  <div class="position-intro" fxLayout="column" fxLayoutWrap="nowrap">
+    <div style="margin-top: 100px;">
+    <h1 *ngIf="!loading" class="home-intro-title">What products are you looking for?</h1>
+
+    <table class="app-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="app-full-width search-box">
+              <mat-label>Search</mat-label>
+              <input matInput type="text" [(ngModel)]="value">
+              <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <!-- <p *ngIf="!loading" class="home-intro-text"> Hundreds of trusted people across Southern Africa happy to help.</p> -->
+        <a *ngIf="!loading" class="moblie-app-link" mat-button href="https://apps.apple.com/za/app/afritasks/id1486473378">
+          <img class="ios-image" src="../../../assets/images/ios_svg.svg"/>
+        </a>
+        <a *ngIf="!loading" class="moblie-app-link" mat-button href="https://play.google.com/store/apps/details?id=com.afritasks.afritasks">
+          <img class="android-image"  src="../../../assets/images/android_app.png"/>
+        </a>
+      </div>
+  </div>
+</section>
+<!-- <div id="feature-section" class="feature-two section-two">
+  <div class="container">
+      <div class="text-center">
+          <h1 class="title-page">What do you need help with?</h1>
+      </div>
+  </div>
+</div> -->

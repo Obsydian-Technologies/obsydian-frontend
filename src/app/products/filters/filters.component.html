@@ -1,0 +1,35 @@
+<ul>
+    <li class="mb-3" *ngFor="let category of rootCategoryList | keyvalue">
+      <label class="radio is-size-4" >
+        <input type="checkbox" value="{{category.key.slug}}" [checked]="category.value" (change)="filterRootCategory(category)">
+        <span class="pl-2">{{category.key.title}}</span>
+      </label>
+    </li>
+  </ul>
+  <hr/>
+  <ul>
+    <li class="mb-3" *ngFor="let category of categoryList | keyvalue">
+      <label class="checkbox is-size-4" >
+        <input type="checkbox" value="{{category.key.slug}}" [checked]="category.value" (change)="filterCategory(category)">
+        <span class="pl-2">{{category.key.title}}</span>
+      </label>
+    </li>
+  </ul>
+  <hr/>
+  <ul>
+    <li class="mb-3 color-item" *ngFor="let color of colorList | keyvalue">
+        <label class="checkbox is-size-4">
+          <input type="checkbox" value="{{color.key}}" [checked]="color.value" (change)="filterColor(color)">
+          <span [style.background-color]="color.key"></span>
+        </label>
+      </li>
+  </ul>
+  <hr/>
+  <ul>
+    <li class="mb-3" *ngFor="let price of priceList | keyvalue">
+      <label class="checkbox is-size-4" >
+        <input type="checkbox" value="{{price.key.slug}}" [checked]="price.value" (change)="filterPrice(price)">
+        <span class="pl-2">{{price.key.title}}</span>
+      </label>
+    </li>
+  </ul>

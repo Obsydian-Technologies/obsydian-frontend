@@ -1,0 +1,53 @@
+<section class="obsidian-section">
+    <span class="obsidian-span">
+    <div class="obsidian-div">
+<div class="obsidian-container">
+    <h2>My Account Details</h2>
+    <div *ngIf="loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    <form class="app-form" *ngIf="!loading"[formGroup]="profileForm" autocomplete="on">
+
+        <div class="profile-picture">
+            <label>Profile Picture</label>
+            <app-avatar
+              [userId]="userId"
+              [url]="currentAvatarUrl"
+              (loaded)="showLoader()"
+              (uploaded)="onAvatarUploadComplete($event)"
+              (removed)="onAvatarRemove()"
+              (picked)="onAvatarPicked()"
+              >
+            </app-avatar>
+          </div>
+
+    <mat-form-field>
+      <input matInput placeholder="First Name" type="text" formControlName="fname" autocomplete="family-name" required>
+      <mat-hint *ngIf="!fnameInput.value">Enter your first name</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Last Name" type="text" formControlName="lname" autocomplete="given-name" required>
+      <mat-hint *ngIf="!lnameInput.value">Enter your last name</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="tel" placeholder="Mobile Number" matInput formControlName="phone" autocomplete="tel">
+    </mat-form-field>
+
+    <table class="app-form-label" cellspacing="0">
+        <tr class="text-center">
+          <td>
+              <button mat-raised-button color="primary" (click)="editProfile()" [disabled]="loading.loading || !profileForm.valid">Save</button>
+              &nbsp;
+              <button mat-stroked-button (click)="signOut()" class="signout">Sign Out</button>
+          </td>
+        </tr>
+    </table>
+
+
+    </form>
+  </div>
+</div>
+</span>
+</section>

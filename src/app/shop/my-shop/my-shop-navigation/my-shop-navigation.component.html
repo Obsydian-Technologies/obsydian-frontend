@@ -1,0 +1,149 @@
+<div *ngIf="!loading" class="header-container" [class.header-is-mobile]="mobileQuery.matches">
+  <!-- Web Header -->
+  <mat-toolbar *ngIf="!mobileQuery.matches" [style.height.px]="mobileQuery.matches ? 55 : 50"
+    class="header-toolbar mat-elevation-z4" color="primary">
+    <div style="width: 100rem; max-width:100rem;margin-left:auto;margin-right: auto">
+      <button *ngIf="mobileQuery.matches" style="margin-right: 5px;" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>search</mat-icon>
+          <span>Browse Products</span>
+        </button>
+      </mat-menu>
+      <button [style.margin.left]="mobileQuery.matches ? 15 : 0" style="width: 166px; margin-right: 10px;"
+        mat-icon-button (click)="goToLandingPage()">
+        <span>Obsidian</span>
+      </button>
+      <button *ngIf="!mobileQuery.matches" mat-button (click)="goToDashBoard()">
+        <mat-icon>dashboard</mat-icon> Dashboard
+      </button>
+      &nbsp;
+      <button *ngIf="!mobileQuery.matches" mat-button (click)="goToMyProducts()" [matMenuTriggerFor]="productsMenu">
+        <mat-icon>article</mat-icon> Products
+      </button>
+      <mat-menu #productsMenu="matMenu">
+        <button mat-menu-item routerLink="/shop/my-shop/list-products">
+          <mat-icon>list</mat-icon>
+          <span>My Products</span>
+        </button>
+        <button mat-menu-item (click)="addProduct()">
+          <mat-icon>add_box</mat-icon>
+          <span>Add Product</span>
+        </button>
+      </mat-menu>
+      &nbsp;
+      <button *ngIf="!mobileQuery.matches" mat-button (click)="goToMyStoreSetup()">
+        <mat-icon>settings</mat-icon> Store Setup
+      </button>
+      &nbsp;
+      <button *ngIf="!mobileQuery.matches" mat-button (click)="goToHelpCenter()">
+        <mat-icon>help_center</mat-icon> Help Centre
+      </button>
+      &nbsp;
+      <mat-menu #appMenu="matMenu" yPosition="below">
+        <button *ngIf="numberOfNewNotifications > 0 && user && user.email_verified" mat-menu-item
+          routerLink="/account/notifications">
+          Notifications({{ numberOfNewNotifications }})
+        </button>
+        <button *ngIf="numberOfNewNotifications == 0" mat-menu-item
+          routerLink="/account/notifications">
+          Notifications
+        </button>
+        <button *ngIf="user && user.email_verified" mat-menu-item routerLink="/account/payment_methods">
+          Payments
+        </button>
+        <button *ngIf="user && user.email_verified" mat-menu-item [matMenuTriggerFor]="settings">
+          Settings
+        </button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+      <mat-menu #settings="matMenu">
+        <button *ngIf="user && user.email_verified" mat-menu-item routerLink="/auth/profile">
+          Profile
+        </button>
+        <button *ngIf="user && user.email_verified" mat-menu-item routerLink="/account/settings-notifications">
+          Notifications
+        </button>
+      </mat-menu>
+      <button style="margin-left: 10px; float: right;" *ngIf="user" mat-icon-button [matMenuTriggerFor]="appMenu">
+        <div class="text-center">
+          <img style="width:40px;" [src]="profile_image"
+            onError="this.src='https://s3-ap-southeast-2.amazonaws.com/afritasks-profile-pictures/default_white.png';"
+            alt="Profile" />
+        </div>
+      </button>
+      <div style="float: right;">
+        <button *ngIf="numberOfNewNotifications == 0" style="margin-left: 10px; float: right;" mat-icon-button>
+          <mat-icon>notifications_none</mat-icon>
+        </button>
+        <button *ngIf="numberOfNewNotifications > 0" style="margin-left: 10px; float: right;" mat-icon-button>
+          <mat-icon>notifications_active</mat-icon>
+        </button>
+        <span style="flex: 1 1 auto;" *ngIf="mobileQuery.matches"></span>
+        <button *ngIf="mobileQuery.matches" style="margin-bottom: 3px;" mat-mini-fab color="primary"
+          (click)="openTaskCreate()">
+          <mat-icon>library_add</mat-icon>
+        </button>
+        <span *ngIf="user?.email_verified">&nbsp;</span>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <!-- Mobile -->
+
+  <mat-toolbar *ngIf="mobileQuery.matches" [style.height.px]="mobileQuery.matches ? 55 : 50"
+    class="header-toolbar mat-elevation-z4" color="primary">
+    <button *ngIf="mobileQuery.matches" style="margin-right: 5px;" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button (click)="openBrowseTasks()" mat-menu-item>
+        <mat-icon>search</mat-icon>
+        <span>Browse Products</span>
+      </button>
+    </mat-menu>
+    <button [style.margin.left]="mobileQuery.matches ? 15 : 0" style="width: 166px; margin-right: 10px;" mat-icon-button
+      color="primary" (click)="goToDashBoard()"></button>
+    <span *ngIf="user && user.email_verified">&nbsp;</span>
+    <span style="flex: 1 1 auto;" *ngIf="mobileQuery.matches"></span>
+    <button *ngIf="mobileQuery.matches" style="margin-bottom: 3px;" mat-mini-fab color="primary"
+      (click)="openTaskCreate()">
+      <mat-icon>library_add</mat-icon>
+    </button>
+    <span *ngIf="user?.email_verified">&nbsp;</span>
+    <mat-menu #appMenu="matMenu" yPosition="below">
+      <button *ngIf="numberOfNewNotifications > 0" mat-menu-item
+        routerLink="/account/notifications">
+        Notifications({{ numberOfNewNotifications }})
+      </button>
+      <button *ngIf="numberOfNewNotifications == 0" mat-menu-item
+        routerLink="/account/notifications">
+        Notifications
+      </button>
+      <button *ngIf="user && user.email_verified" mat-menu-item routerLink="/account/payment_methods">
+        Payments
+      </button>
+      <button *ngIf="user && user.email_verified" mat-menu-item [matMenuTriggerFor]="settings">
+        Settings
+      </button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <mat-menu #settings="matMenu">
+      <button *ngIf="user && user.email_verified" mat-menu-item routerLink="/auth/profile">
+        Profile
+      </button>
+      <button *ngIf="user && user.email_verified" mat-menu-item routerLink="/account/settings-notifications">
+        Notifications
+      </button>
+    </mat-menu>
+    <button *ngIf="user" mat-icon-button [matMenuTriggerFor]="appMenu">
+      <div class="text-center">
+        <img style="width:40px;" [src]="profile_image"
+          onError="this.src='https://s3-ap-southeast-2.amazonaws.com/afritasks-profile-pictures/default_white.png';"
+          alt="Profile" />
+      </div>
+    </button>
+  </mat-toolbar>
+</div>

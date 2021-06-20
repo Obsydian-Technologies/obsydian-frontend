@@ -1,0 +1,21 @@
+<app-intro *ngIf="!loading"></app-intro>
+<app-get-app *ngIf="!loading"> </app-get-app>
+<app-footer *ngIf="!loading"></app-footer>
+
+
+<footer *ngIf="showDownloadApp" class="mat-elevation-z4">
+  <div class="text-center">
+ <span style="float: left; margin: 15px">
+ <mat-icon style="cursor: pointer;" (click)="showDownloadApp = false;">close</mat-icon>
+</span>
+ <img class="ios-image" style="float: left; padding: 2px; width: 14%;" src="../../../assets/images/icon_round.PNG"/>
+<span style="float: left; margin: 3px">
+ <span style="float: left;">Obsidian Market</span>
+ <span style="float: left; margin-left: -59px;
+ margin-top: 19px;" >FREE - Download </span>
+ <a  style="float: right; "mat-button color="primary" [href]="link">
+    View
+</a>
+</span>
+ </div>
+</footer>

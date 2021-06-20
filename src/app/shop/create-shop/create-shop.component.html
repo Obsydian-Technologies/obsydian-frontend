@@ -1,0 +1,30 @@
+<section class="obsidian-section">
+  <span class="obsidian-span">
+    <div class="obsidian-div">
+      <div class="obsidian-container">
+        <div *ngIf="loading">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <form class="app-form" *ngIf="!loading" [formGroup]="shopNameForm">
+          <div class="text-center" style="padding-bottom: 12px;">
+            <strong>Name your shop (Example: My Shop Name)</strong>
+          </div>
+          <table class="app-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="app-full-width">
+                  <input matInput required name="shopname" placeholder="Shop Name" type="text"
+                    formControlName="shopname" [(ngModel)]="value">
+                  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </td>
+            </tr>
+            <button mat-stroked-button [disabled]="shouldEnableSubmit()" (click)="createShop()">Create</button>
+          </table>
+        </form>
+      </div>
+    </div>
+  </span>
+</section>

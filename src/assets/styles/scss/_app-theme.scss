@@ -1,0 +1,73 @@
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+$custom-typography: mat-typography-config(
+  $font-family: 'poppins, Roboto',
+  $headline: mat-typography-level(24px, 32px, 400),
+  $body-1: mat-typography-level(14px, 20px, 400)
+);
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core($custom-typography);
+
+//custom pallete
+
+// define a real custom palette (using http://mcg.mbitson.com)
+$obsidian-brand: (
+    50 : #e6ebfc,
+    100 : #c1cef9,
+    200 : #97adf5,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #ffffff,
+    A200 : #d6dbff,
+    A400 : #a3aeff,
+    A700 : #8a97ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$my-theme-primary: mat-palette($obsidian-brand,500);
+$my-theme-accent:  mat-palette($mat-gray,800);
+
+// The warn palette is optional (defaults to red).
+$my-theme-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$my-theme-theme: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($my-theme-theme);
+
+
+// Create your Sass color vars (will be available in all the project)
+$theme-primary: mat-color($my-theme-primary);
+$theme-accent: mat-color($my-theme-accent);
+

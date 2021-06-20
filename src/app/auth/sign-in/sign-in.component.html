@@ -1,0 +1,66 @@
+<div *ngIf="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+<form class="app-form" *ngIf="!loading" [formGroup]="signinForm">
+
+  <table class="app-full-width" cellspacing="0">
+      <tr>
+        <td>
+            <div class="text-center" style="padding-bottom: 12px;">
+                <strong>{{header}}</strong>
+              </div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="app-full-width text-center" cellspacing="0">
+        <tr>
+          <td>
+              <button  mat-stroked-button color="primary"
+                  (click)="signInWithGoogle()">
+                  Sign In with Google
+              </button>
+          </td>
+        </tr>
+      </table>
+
+  <table class="app-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="app-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Ex. pat@example.com" required name="UserEmail" formControlName="email" autocomplete="email"/>
+          <mat-error *ngIf="emailInput?.hasError('email') && !emailInput?.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailInput?.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="app-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="app-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" required name="Password" placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" />
+          <mat-icon matSuffix class="cursor-pointer" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+      </td>
+    </tr>
+    <p><button mat-button (click)="resetPassword()">Forgot your password?</button></p>
+  </table>
+
+  <table class="app-full-width" cellspacing="0">
+    <tr class="text-center">
+      <td>
+        <button [disabled]="shouldEnableSubmit()" [style.margin-top.px]="mobileQuery.matches ? 10 : 0" mat-raised-button color="primary" (click)="signIn()">Sign In</button>
+      </td>
+    </tr>
+    <p class="text-center"><button mat-button (click)="signUp()">Need an account? <strong>Sign Up</strong></button></p>
+    <p class="text-center" style="color: red;" *ngIf="errorMessage">{{errorMessage}}</p>
+  </table>
+</form>
+

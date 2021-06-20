@@ -1,0 +1,42 @@
+{
+  "paths": [
+    {
+      "name": "/product/{id}",
+      "lambdaFunction": "shopFunction",
+      "privacy": {
+        "private": true,
+        "auth": [
+          "/POST",
+          "/GET",
+          "/PUT",
+          "/PATCH",
+          "/DELETE"
+        ]
+      },
+      "policyResourceName": "/product/*"
+    }
+  ],
+  "resourceName": "shopAPI",
+  "apiName": "shopAPI",
+  "functionArns": [
+    {
+      "lambdaFunction": "shopFunction"
+    }
+  ],
+  "privacy": {
+    "auth": 1,
+    "unauth": 0,
+    "authRoleName": "amplify-obsidian-dev-171243-authRole",
+    "unAuthRoleName": "amplify-obsidian-dev-171243-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "shopFunction",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

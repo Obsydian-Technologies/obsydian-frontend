@@ -1,0 +1,39 @@
+<div *ngIf="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<form class="app-form" *ngIf="!loading" [formGroup]="confirmForm">
+    <div class="text-center" style="padding-bottom: 12px;">
+        <strong>Confirm your email address</strong>
+    </div>
+
+      <table class="app-full-width" cellspacing="0">
+          <tr>
+            <td>
+                <mat-form-field class="app-full-width">
+                    <input matInput placeholder="Email" type="email" formControlName="email">
+                </mat-form-field>
+            </td>
+          </tr>
+      </table>
+
+      <table class="app-full-width" cellspacing="0">
+          <tr>
+            <td>
+                <mat-form-field class="app-full-width">
+                    <input matInput placeholder="Confirmation Code" type="text" formControlName="code" required>
+                    <mat-hint *ngIf="!codeInput.value">Enter the confirmation code that was emailed to you</mat-hint>
+                </mat-form-field>
+            </td>
+          </tr>
+      </table>
+
+      <table class="app-full-width" cellspacing="0">
+          <tr class="text-center">
+            <td>
+                <button mat-raised-button color="primary" (click)="confirmCode()">Confirm</button>
+                <p>Didn't receive a code? <a href="javascript:void(null)" (click)="sendAgain()">Send again</a></p>
+            </td>
+          </tr>
+      </table>
+  </form>

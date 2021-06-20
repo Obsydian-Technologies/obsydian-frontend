@@ -1,0 +1,23 @@
+.get-app {
+    padding-top: 3rem;
+    /* padding-bottom: 5rem; */
+  }
+
+  .ios-image{
+    width: 13vw;
+  }
+
+  .android-image{
+    width: 15vw;
+  }
+
+  @media (max-width: 740px) {
+    .ios-image{
+      width: 32vw !important;
+    }
+  
+    .android-image{
+      width: 38vw !important;
+    }
+
+  }

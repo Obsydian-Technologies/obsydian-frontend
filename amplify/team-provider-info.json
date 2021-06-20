@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-obsidian-dev-171243-authRole",
+      "UnauthRoleArn": "arn:aws:iam::478622628041:role/amplify-obsidian-dev-171243-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::478622628041:role/amplify-obsidian-dev-171243-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-obsidian-dev-171243-deployment",
+      "UnauthRoleName": "amplify-obsidian-dev-171243-unauthRole",
+      "StackName": "amplify-obsidian-dev-171243",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:478622628041:stack/amplify-obsidian-dev-171243/6e15ebb0-c5cd-11eb-bb28-0288da200f5a",
+      "AmplifyAppId": "d2k2to1rv5z51k"
+    },
+    "categories": {
+      "auth": {
+        "obsidian6e7be7bd": {}
+      },
+      "function": {
+        "shopFunction": {
+          "deploymentBucketName": "amplify-obsidian-dev-171243-deployment",
+          "s3Key": "amplify-builds/shopFunction-374c714b6c4147427868-build.zip"
+        }
+      }
+    }
+  }
+}

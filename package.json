@@ -1,6 +1,6 @@
 {
   "name": "obsidian-frontend",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,19 +11,23 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.0.3",
+    "@angular/cdk": "^12.0.2",
     "@angular/common": "~12.0.3",
     "@angular/compiler": "~12.0.3",
     "@angular/core": "~12.0.3",
     "@angular/forms": "~12.0.3",
+    "@angular/material": "^12.0.2",
     "@angular/platform-browser": "~12.0.3",
     "@angular/platform-browser-dynamic": "~12.0.3",
     "@angular/router": "~12.0.3",
+    "@aws-amplify/ui-angular": "^1.0.10",
+    "aws-amplify": "^3.4.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.0.3",
+    "@angular-devkit/build-angular": "^0.901.15",
     "@angular/cli": "~12.0.3",
     "@angular/compiler-cli": "~12.0.3",
     "@types/jasmine": "~3.6.0",
