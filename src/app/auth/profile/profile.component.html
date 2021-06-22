@@ -3,10 +3,7 @@
     <div class="obsydian-div">
 <div class="obsydian-container">
     <h2>My Account Details</h2>
-    <div *ngIf="loading">
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </div>
-    <form class="app-form" *ngIf="!loading"[formGroup]="profileForm" autocomplete="on">
+    <form class="app-form" *ngIf="profile"[formGroup]="profileForm" autocomplete="on">
 
         <div class="profile-picture">
             <label>Profile Picture</label>
@@ -32,15 +29,16 @@
     </mat-form-field>
 
     <mat-form-field>
+        <span matPrefix>{{countryCode}} &nbsp;</span>
       <input type="tel" placeholder="Mobile Number" matInput formControlName="phone" autocomplete="tel">
     </mat-form-field>
 
     <table class="app-form-label" cellspacing="0">
         <tr class="text-center">
           <td>
-              <button mat-raised-button color="primary" (click)="editProfile()" [disabled]="loading.loading || !profileForm.valid">Save</button>
+              <button mat-raised-button color="primary" (click)="editProfile()" [class.spinner]="loading" [disabled]="loading.loading || !profileForm.valid"><span *ngIf="!loading">Save</span></button>
               &nbsp;
-              <button mat-stroked-button (click)="signOut()" class="signout">Sign Out</button>
+              <button *ngIf="!loading" mat-stroked-button (click)="signOut()" class="signout">Sign Out</button>
           </td>
         </tr>
     </table>

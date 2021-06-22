@@ -65,6 +65,7 @@ export class AuthService {
         "given_name": user.FirstName,
         "family_name": user.LastName,
         "phone_number": user.MobileCountryCode + user.MobileNumber,
+        'custom:country_code': user.MobileCountryCode,
         'custom:abn': user.Abn,  // custom attribute, not standard
         'custom:isSeller' : user.Seller
       }

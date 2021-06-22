@@ -39,31 +39,26 @@ const routes: Routes = [
   {
     path: 'auth/sign-in',
     component: SignInComponent,
-    canActivate: [UnauthGuard],
     data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true }
   },
   {
     path: 'auth/sign-up',
     component: SignUpComponent,
-    canActivate: [UnauthGuard],
     data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true  }
   },
   {
     path: 'auth/sign-up/:state',
     component: SignUpComponent,
-    canActivate: [UnauthGuard],
     data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true  }
   },
   {
     path: 'auth/reset-password',
     component: ResetPasswordComponent,
-    canActivate: [UnauthGuard],
     data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true  }
   },
   {
     path: 'auth/confirm-code',
     component: ConfirmCodeComponent,
-    canActivate: [UnauthGuard],
     data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true  }
   },
   {

@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit {
   user: CognitoUser | undefined;
   loading = false;
   userId: string | undefined;
+  countryCode: string = "+61";
 
   get emailInput() { return this.profileForm.get('email'); }
   get fnameInput() { return this.profileForm.get('fname'); }
@@ -71,6 +72,10 @@ export class ProfileComponent implements OnInit {
           this.fnameInput.setValue(this.profile.attributes['given_name']);
           this.lnameInput.setValue(this.profile.attributes['family_name']);
           this.phoneInput.setValue(this.profile.attributes['phone_number']);
+
+          if(this.profile.attributes['country_code']){
+            this.countryCode = this.profile.attributes['country_code']
+          }
         }
       })
       .catch(error => {

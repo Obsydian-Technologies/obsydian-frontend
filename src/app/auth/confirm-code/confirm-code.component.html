@@ -33,7 +33,7 @@
               <td>
                   <button *ngIf="!loading" mat-stroked-button color="primary" routerLink="/landing">Close</button>
                   &nbsp;
-                <button mat-raised-button color="primary" (click)="confirmCode()"><span *ngIf="!loading">Confirm</span></button>
+                <button mat-raised-button color="primary" (click)="confirmCode()" [class.spinner]="loading"><span *ngIf="!loading">Confirm</span></button>
                 <p class="obsidian-small-text">Didn't receive a code? <span (click)="sendAgain()" class="obsidian-link" ><strong>Send again</strong></span></p>
               </td>
             </tr>
