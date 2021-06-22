@@ -5,6 +5,7 @@ import Auth, { CognitoUser } from '@aws-amplify/auth';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { environment } from 'src/environments/environment';
 import { NotificationService } from 'src/app/services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm-code',
@@ -38,7 +39,8 @@ export class ConfirmCodeComponent implements OnInit {
   constructor(
     media: MediaMatcher,
     changeDetectorRef: ChangeDetectorRef,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private router: Router
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 737px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -47,7 +49,7 @@ export class ConfirmCodeComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.email) {
-      this.signUp();
+      // this.signUp();
     } else {
       Auth.resendSignUp(this.email);
     }
@@ -75,25 +77,24 @@ export class ConfirmCodeComponent implements OnInit {
             environment.confirm.password) {
           Auth.signIn(this.email, environment.confirm.password)
             .then(() => {
-              this.authFlow.emit('close');
+              this.router.navigateByUrl('/auth/profile');
             }).catch((error: any) => {
               this.signIn();
             })
         }
       })
       .catch((error: any) => {
-        console.log(error);
         this.notification.show(error.message);
       })
   }
 }
 
 async signIn() {
-  this.authFlow.emit('signIn');
+  this.router.navigateByUrl('/auth/sign-in');
 }
 
 async signUp() {
-  this.authFlow.emit('signUp');
+  this.router.navigateByUrl('/auth/sign-up');
 }
 
 }

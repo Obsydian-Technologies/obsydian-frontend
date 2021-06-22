@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "obsidian6e7be7bd_identitypool_6e7be7bd",
+    "identityPoolName": "obsydian6e7be7bd_identitypool_6e7be7bd",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "obsidi6e7be7bd",
-    "userPoolName": "obsidian6e7be7bd_userpool_6e7be7bd",
+    "resourceNameTruncated": "obsydi6e7be7bd",
+    "userPoolName": "obsydian6e7be7bd_userpool_6e7be7bd",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "obsidi6e7be7bd_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "obsydi6e7be7bd_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
     "sharedId": "6e7be7bd",
-    "resourceName": "obsidian6e7be7bd",
+    "resourceName": "obsydian6e7be7bd",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -50,12 +50,17 @@
     "usernameAttributes": [
         "email"
     ],
-    "hostedUIDomainName": "obsidianmarket",
-    "authProvidersUserPool": [],
-    "hostedUIProviderMeta": "[]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://obsidianmarket.com.au/\"],\"LogoutURLs\":[\"https://obsidianmarket.com.au/signout/\"]}",
-    "userPoolGroupList": [],
+    "hostedUIDomainName": "obsydian",
+    "authProvidersUserPool": [
+        "Facebook",
+        "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "userPoolGroupList": [
+        "obsydianPG"
+    ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "dependsOn": []
+    "dependsOn": [],
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://obsydian.com.au/\"],\"LogoutURLs\":[\"https://obsydian.com.au/signout/\"]}"
 }

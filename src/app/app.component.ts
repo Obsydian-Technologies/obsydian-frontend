@@ -15,6 +15,7 @@ export class AppComponent {
   title = GlobalConstants.siteName;
   allowHeader = true;
   allowShopHeader = false;
+  allowMinHeader = false;
   loadApp = false;
 
   user: CognitoUserInterface | undefined;
@@ -39,7 +40,7 @@ export class AppComponent {
 
       this.matIconRegistry.addSvgIcon(
         `obs_logo_white`,
-        this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/images/Size-increase-White.svg')
+        this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/images/obsydian_logo_white_solid.svg')
       );
 
       this.matIconRegistry.addSvgIcon(
@@ -99,6 +100,7 @@ export class AppComponent {
         if (this.route.root.firstChild) {
           this.allowHeader = this.route.root.firstChild.snapshot.data['allowHeader'];
           this.allowShopHeader = this.route.root.firstChild.snapshot.data['allowShopHeader'];
+          this.allowMinHeader = this.route.root.firstChild.snapshot.data['allowMinHeader'];
         }
         // (<any>window).ga('set', 'page', event.urlAfterRedirects);
         // (<any>window).ga('send', 'pageview');

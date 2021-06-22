@@ -1,19 +1,8 @@
-<section *ngIf="productList" class="obsidian-product-listing-section">
-  <span *ngFor="let product of productList" class="obsidian-product-listing-span" style="display: inline-block;">
-    <div class="obsidian-product-listing-div">
-      <div class="obsidian-product-listing-container">
-        <ng-container>
-          <div class="text-center">
-            <img src="https://picsum.photos/300" class="image" />
-            <div class="level is-size-4 is-uppercase">
-              <span class="level-item">Belaire</span>
-              &nbsp;
-              <span class="level-item has-text-weight-bold">$100</span>
-            </div>
-            <app-actions [product]="product"></app-actions>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-  </span>
-</section>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-filters (selectedFilters)="onChangeFilters($event)"></app-filters>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-product-list [productList]="productList" ></app-product-list>
+  </mat-drawer-content>
+</mat-drawer-container>

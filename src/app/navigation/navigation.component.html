@@ -7,29 +7,29 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <!-- <button (click)="openTaskCreate()" mat-menu-item>
+        <button (click)="openTaskCreate()" mat-menu-item>
           <mat-icon>library_add</mat-icon>
           <span>Post a service</span>
-        </button> -->
-        <button *ngIf="!(user)" (click)="openSignIn('login')" mat-menu-item>
+        </button>
+        <button *ngIf="!(user)" routerLink="/auth/sign-in" mat-menu-item>
           <mat-icon>lock_open</mat-icon>
           <span>Login</span>
         </button>
-        <button *ngIf="!(user)" (click)="openSignIn('signUp')" mat-menu-item>
+        <button *ngIf="!(user)" routerLink="/auth/sign-up" mat-menu-item>
           <mat-icon>people_outline</mat-icon>
-          <span>Join Obsidian</span>
+          <span>Join Obsydian</span>
         </button>
         <button routerLink="/products" mat-menu-item>
           <mat-icon>search</mat-icon>
           <span>Browse Products</span>
         </button>
-        <!-- <button (click)="openBrowseTasks()" mat-menu-item>
+        <button (click)="openBrowseTasks()" mat-menu-item>
           <mat-icon>search</mat-icon>
           <span>Service Requests</span>
-        </button> -->
+        </button>
         <button routerLink="/sell-products" mat-menu-item>
           <mat-icon svgIcon="money"></mat-icon>
-          <span>Sell on Obsidian</span>
+          <span>Sell on Obsydian</span>
         </button>
         <button *ngIf="(user?.email_verified)" (click)="openMyTasks()" mat-menu-item>
           <mat-icon>library_books</mat-icon>
@@ -44,16 +44,18 @@
           <span>My Shop</span>
         </button>
       </mat-menu>
+
       <button [style.margin.left]="mobileQuery.matches ? 15 : 0" style="width: 166px; margin-right: 10px;"
         mat-icon-button (click)="goToDashBoard()">
-        <span>Obsidian</span>
+        <mat-icon svgIcon="obs_logo_white" style="z-index: 6; width: 80%;"></mat-icon>
       </button>
+
       <!-- <button *ngIf="!mobileQuery.matches" mat-raised-button style="background-color: white; color: black"
-        class="with-round-borders" (click)="openTaskCreate()">Post a service</button>
-      &nbsp; -->
-      <!-- <button *ngIf="!mobileQuery.matches" mat-button (click)="openBrowseTasks()">Service requests</button>
-      &nbsp; -->
-      <button *ngIf="!mobileQuery.matches" mat-button routerLink="/products">Browse products</button>
+        class="with-round-borders" (click)="openTaskCreate()">Post a service</button> -->
+      &nbsp;
+      <button *ngIf="!mobileQuery.matches" mat-button (click)="openBrowseTasks()">Service requests</button>
+      &nbsp;
+      <button *ngIf="!mobileQuery.matches" mat-button routerLink="/products">Marketplace</button>
       <!-- &nbsp;
       <button *ngIf="user && !mobileQuery.matches && user.email_verified" mat-button (click)="openMyTasks()">My
         services</button>
@@ -83,7 +85,7 @@
         <button *ngIf="user && user.email_verified" mat-menu-item
           routerLink="/account/payment_methods">Payments</button>
         <button *ngIf="user && user.email_verified" mat-menu-item [matMenuTriggerFor]="settings">Settings</button>
-        <button mat-menu-item routerLink="/sell-products">Sell on Obsidian</button>
+        <button mat-menu-item routerLink="/sell-products">Sell on Obsydian</button>
         <button mat-menu-item (click)="logout();">Logout</button>
       </mat-menu>
       <mat-menu #settings="matMenu">
@@ -100,15 +102,15 @@
         <mat-icon>shopping_cart</mat-icon>
       </button>
       <div style="float: right;">
-        <button *ngIf="!mobileQuery.matches" routerLink="/sell-products" mat-button>Sell on Obsidian</button>
+        <button *ngIf="!mobileQuery.matches" routerLink="/sell-products" mat-button>Sell on Obsydian</button>
         <span *ngIf="user?.email_verified">&nbsp;</span>
         <!-- <button *ngIf="user && !mobileQuery.matches && user.email_verified" routerLink="/account/notifications"
           mat-button><span *ngIf="numberOfNewNotifications > 0" matBadgeColor="warn"
             matBadgeOverlap="false">Notifications</span><span
             *ngIf="!(numberOfNewNotifications > 0)">Notifications</span></button> -->
-        <button *ngIf="!user && !mobileQuery.matches" mat-button (click)="openSignUp('signUp')">Sign Up</button>
+        <button *ngIf="!user && !mobileQuery.matches" mat-button routerLink="/auth/sign-up">Sign Up</button>
         <span *ngIf="user?.email_verified">&nbsp;</span>
-        <button *ngIf="!user && !mobileQuery.matches" mat-button (click)="openSignIn('login')">Sign In</button>
+        <button *ngIf="!user && !mobileQuery.matches" mat-button routerLink="/auth/sign-in">Sign In</button>
         <span style="flex: 1 1 auto;" *ngIf="mobileQuery.matches"></span>
         <button *ngIf="mobileQuery.matches" style="margin-bottom: 3px;" mat-mini-fab color="primary"
           (click)="openTaskCreate()">
@@ -134,13 +136,13 @@
         <mat-icon>library_add</mat-icon>
         <span>Post a service</span>
       </button> -->
-      <button *ngIf="!(user)" (click)="openSignIn('login')" mat-menu-item>
+      <button *ngIf="!(user)" routerLink="/auth/sign-in" mat-menu-item>
         <mat-icon>lock_open</mat-icon>
         <span>Login</span>
       </button>
-      <button *ngIf="!(user)" (click)="openSignUp('signUp')" mat-menu-item>
+      <button *ngIf="!(user)" routerLink="/auth/sign-up" mat-menu-item>
         <mat-icon>people_outline</mat-icon>
-        <span>Join Obsidian</span>
+        <span>Join Obsydian</span>
       </button>
       <button routerLink="/products" mat-menu-item>
         <mat-icon>search</mat-icon>
@@ -156,12 +158,12 @@
       </button> -->
       <button routerLink="/sell-products" mat-menu-item>
         <mat-icon svgIcon="money"></mat-icon>
-        <span>Sell on Obsidian</span>
+        <span>Sell on Obsydian</span>
       </button>
     </mat-menu>
     <button [style.margin.left]="mobileQuery.matches ? 15 : 0" style="width: 166px; margin-right: 10px;" mat-icon-button
       color="primary" (click)="goToDashBoard()">
-      <!-- <mat-icon svgIcon="afr_logo_white" style="z-index: 6; width: 100%;"></mat-icon> -->
+      <mat-icon svgIcon="obs_logo_white" style="z-index: 6; width: 80%;"></mat-icon>
     </button>
     <!-- <button *ngIf="!mobileQuery.matches" mat-raised-button style="background-color: white; color: #3854e6"
       class="with-round-borders" (click)="openTaskCreate()">Post a service</button>
@@ -175,15 +177,15 @@
     <button *ngIf="user && !mobileQuery.matches && user.email_verified" mat-button (click)="openMyTasks()">My
       shop</button>
     <span *ngIf="!mobileQuery.matches" class="header-spacer"></span>
-    <button *ngIf="!mobileQuery.matches" routerLink="/sell-products" mat-button>Sell on Obsidian</button>
+    <button *ngIf="!mobileQuery.matches" routerLink="/sell-products" mat-button>Sell on Obsydian</button>
     <span *ngIf="user && user.email_verified">&nbsp;</span>
     <button *ngIf="user && !mobileQuery.matches && user.email_verified" routerLink="/account/notifications"
       mat-button><span *ngIf="numberOfNewNotifications > 0" matBadgeColor="warn"
         matBadgeOverlap="false">Notifications</span><span
         *ngIf="!(numberOfNewNotifications > 0)">Notifications</span></button>
-    <button *ngIf="!user && !mobileQuery.matches" mat-button (click)="openSignUp('signUp')">Sign Up</button>
+    <button *ngIf="!user && !mobileQuery.matches" mat-button routerLink="/auth/sign-up">Sign Up</button>
     <span *ngIf=" user && user.email_verified">&nbsp;</span>
-    <button *ngIf="!(user ) && !mobileQuery.matches" mat-button (click)="openSignIn('login')">Sign In</button>
+    <button *ngIf="!(user ) && !mobileQuery.matches" mat-button routerLink="/auth/sign-in">Sign In</button>
     <span style="flex: 1 1 auto;" *ngIf="mobileQuery.matches"></span>
     <button *ngIf="mobileQuery.matches" style="margin-bottom: 3px;" mat-mini-fab color="primary"
       (click)="openTaskCreate()">
@@ -199,7 +201,7 @@
       <button *ngIf="(user?.email_verified)" (click)="openMyTasks()" mat-menu-item>
         My Events
       </button> -->
-      <button mat-menu-item routerLink="/sell-products">Sell on Obsidian</button>
+      <button mat-menu-item routerLink="/sell-products">Sell on Obsydian</button>
       <button *ngIf="(user?.email_verified)" (click)="openMyShop()" mat-menu-item>
         My Shop
       </button>

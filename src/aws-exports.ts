@@ -3,12 +3,12 @@
 
 const awsmobile = {
     "aws_project_region": "ap-southeast-2",
-    "aws_cognito_identity_pool_id": "ap-southeast-2:a646b6c1-0df0-4c72-adce-1a16dd1ac4ef",
+    "aws_cognito_identity_pool_id": "ap-southeast-2:83c2096d-34e9-4ba4-9d56-877ce626bcdd",
     "aws_cognito_region": "ap-southeast-2",
-    "aws_user_pools_id": "ap-southeast-2_e0opKmMqO",
-    "aws_user_pools_web_client_id": "ot0umrg414iimf0vg6n8ee7el",
+    "aws_user_pools_id": "ap-southeast-2_6mzSMOOzE",
+    "aws_user_pools_web_client_id": "6vs1q8pg7am22p8arfsqo27emi",
     "oauth": {
-        "domain": "obsidianmarket-dev.auth.ap-southeast-2.amazoncognito.com",
+        "domain": "obsydian-stage.auth.ap-southeast-2.amazoncognito.com",
         "scope": [
             "phone",
             "email",
@@ -16,27 +16,13 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "https://obsidianmarket.com.au/",
-        "redirectSignOut": "https://obsidianmarket.com.au/signout/",
+        "redirectSignIn": "https://obsydian.com.au/",
+        "redirectSignOut": "https://obsydian.com.au/signout/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",
-    "aws_user_files_s3_bucket": "obsidianb197df0c00754029af0ed78f8b9e5d6a171243-dev",
-    "aws_user_files_s3_bucket_region": "ap-southeast-2",
-    "aws_dynamodb_all_tables_region": "ap-southeast-2",
-    "aws_dynamodb_table_schemas": [
-        {
-            "tableName": "shop-dev",
-            "region": "ap-southeast-2"
-        }
-    ],
-    "aws_cloud_logic_custom": [
-        {
-            "name": "shopAPI",
-            "endpoint": "https://1ic3ac9h6a.execute-api.ap-southeast-2.amazonaws.com/dev",
-            "region": "ap-southeast-2"
-        }
-    ]
+    "aws_user_files_s3_bucket": "obsydianb197df0c00754029af0ed78f8b9e5d6a141039-stage",
+    "aws_user_files_s3_bucket_region": "ap-southeast-2"
 };
 
 

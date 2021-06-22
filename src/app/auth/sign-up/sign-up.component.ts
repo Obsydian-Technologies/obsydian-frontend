@@ -8,7 +8,7 @@ import { User } from 'src/app/models/user';
 import { environment } from "src/environments/environment";
 import { phoneNumberValidator } from 'src/app/validators/phone-validator';
 import { NotificationService } from 'src/app/services/notification.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,9 +17,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class SignUpComponent implements OnInit {
 
-  @Input() header: string = "Sign Up";
+  header: string = "Sign Up";
   @Output() authFlow = new EventEmitter<string>();
-  @Input() seller: boolean = false;
+  seller: boolean = false;
 
   signupForm: FormGroup = new FormGroup({
     email: new FormControl("", [Validators.email, Validators.required]),
@@ -68,13 +68,20 @@ export class SignUpComponent implements OnInit {
     changeDetectorRef: ChangeDetectorRef,
     private authService: AuthService,
     private notification: NotificationService,
-    public dialogRef: MatDialogRef<SignUpComponent>
+    private router: Router,
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 737px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
   ngOnInit() {
+    const state = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
+    if (state && state.length > 0 ) {
+      this.seller = (state === 'sell') ? true: false;
+      if(state === 'sell'){
+        this.header = "Sell on Obsydian"
+      }
+    }
   }
 
   getEmailInputError() {
@@ -125,7 +132,7 @@ export class SignUpComponent implements OnInit {
           this.CognitoUser = data;
           this.loading = false;
           this.notification.show('Account Created, Confirm your email address.');
-          this.confirm();
+          this.router.navigateByUrl('/auth/confirm-code');
         })
         .catch(error => {
           this.errorMessage = error.message;
@@ -135,19 +142,6 @@ export class SignUpComponent implements OnInit {
 
     this.loading = false;
 
-  }
-
-  async signIn() {
-    this.authFlow.emit('Sign In');
-  }
-
-  async confirm() {
-    this.authFlow.emit('confirm');
-  }
-
-  async close(){
-    this.authFlow.emit('close');
-    this.dialogRef.close('Closed AuthFlow');
   }
 }
 

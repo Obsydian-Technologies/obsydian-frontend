@@ -60,26 +60,26 @@ export class SellProductsComponent implements OnInit {
     }
 
     async openCreateShop() {
+      this.loading = true;
       //   (<any>window).ga('send', 'event', {
       //     eventCategory: 'ButtonClicks',
       //     eventLabel: 'OpenCreateShopForm',
       //     eventAction: 'OpenCreateShopForm',
       //     eventValue: 1
       //   });
-      await this.reloadComponent().then( responce => {
-        if(this.user){
-          this.router.navigateByUrl('/shop/create');
-        }else{
-          const dialogRef = this.dialog.open(AuthComponent, {
-            width: '500px',
-            data: { header: 'Sell On ' + this.title, authFlow: 'Sign Up', seller: true}
-          });
 
-          dialogRef.afterClosed().subscribe(result => {
-          });
-        }
-      }).catch( error => {
-        console.log(error);
-      });
+      setTimeout(async () => {
+        await this.reloadComponent().then( responce => {
+          if(this.user){
+            this.router.navigateByUrl('/shop/create');
+          }else{
+            this.router.navigateByUrl('/auth/sign-up/sell');
+          }
+          this.loading = false;
+        }).catch( error => {
+          this.loading = false;
+          console.log(error);
+        });
+      }, 1000);
       }
 }

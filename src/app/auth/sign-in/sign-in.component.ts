@@ -7,6 +7,7 @@ import Auth, { CognitoUser } from '@aws-amplify/auth';
 import { environment } from "src/environments/environment";
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../auth.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -45,8 +46,7 @@ export class SignInComponent implements OnInit {
     media: MediaMatcher,
     changeDetectorRef: ChangeDetectorRef,
     private authService: AuthService,
-    @Inject(MAT_DIALOG_DATA) public dialogData: DialogData,
-    public dialogRef: MatDialogRef<SignInComponent>
+    private router: Router,
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 737px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -80,8 +80,9 @@ export class SignInComponent implements OnInit {
       await this.authService.signIn(this.user.UserEmail,this.user.Password).then(data => {
         this.CognitoUser = data;
         this.loading = false;
-        this.authFlow.emit('close');
-        this.dialogRef.close('Closed AuthFlow');
+        this.router.navigateByUrl("/landing");
+        // this.authFlow.emit('close');
+        // this.dialogRef.close('Closed AuthFlow');
         // check to see if the user has an account in dynamodb, if not then create it
       })
       .catch(error => {
@@ -91,7 +92,7 @@ export class SignInComponent implements OnInit {
           case "UserNotConfirmedException":
             environment.confirm.email = this.user.UserEmail;
             environment.confirm.password = this.user.Password;
-            this.confirm();
+            this.router.navigateByUrl("auth/confirm-code");
             break;
           case "UsernameExistsException":
             this.errorMessage = error.message;
@@ -100,17 +101,5 @@ export class SignInComponent implements OnInit {
       });
     }
     this.loading = false;
-  }
-
-  async signUp() {
-    this.authFlow.emit('Sign Up');
-  }
-
-  async confirm() {
-    this.authFlow.emit('confirm');
-  }
-
-  async resetPassword() {
-    this.authFlow.emit('reset');
   }
 }

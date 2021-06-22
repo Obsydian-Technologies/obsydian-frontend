@@ -66,7 +66,7 @@ export class AuthService {
         "family_name": user.LastName,
         "phone_number": user.MobileCountryCode + user.MobileNumber,
         'custom:abn': user.Abn,  // custom attribute, not standard
-        'custom:seller' : user.Seller
+        'custom:isSeller' : user.Seller
       }
     });
   }

@@ -1,5 +1,0 @@
-{
-    "tableName": "shop",
-    "partitionKeyName": "id",
-    "partitionKeyType": "S"
-}

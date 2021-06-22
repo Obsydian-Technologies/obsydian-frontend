@@ -1,25 +1,44 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-obsidian-dev-171243-authRole",
-      "UnauthRoleArn": "arn:aws:iam::478622628041:role/amplify-obsidian-dev-171243-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::478622628041:role/amplify-obsidian-dev-171243-authRole",
+      "AuthRoleName": "amplify-obsydian-dev-171243-authRole",
+      "UnauthRoleArn": "arn:aws:iam::478622628041:role/amplify-obsydian-dev-171243-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::478622628041:role/amplify-obsydian-dev-171243-authRole",
       "Region": "ap-southeast-2",
-      "DeploymentBucketName": "amplify-obsidian-dev-171243-deployment",
-      "UnauthRoleName": "amplify-obsidian-dev-171243-unauthRole",
-      "StackName": "amplify-obsidian-dev-171243",
-      "StackId": "arn:aws:cloudformation:ap-southeast-2:478622628041:stack/amplify-obsidian-dev-171243/6e15ebb0-c5cd-11eb-bb28-0288da200f5a",
+      "DeploymentBucketName": "amplify-obsydian-dev-171243-deployment",
+      "UnauthRoleName": "amplify-obsydian-dev-171243-unauthRole",
+      "StackName": "amplify-obsydian-dev-171243",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:478622628041:stack/amplify-obsydian-dev-171243/6e15ebb0-c5cd-11eb-bb28-0288da200f5a",
       "AmplifyAppId": "d2k2to1rv5z51k"
     },
     "categories": {
       "auth": {
-        "obsidian6e7be7bd": {}
+        "obsydian6e7be7bd": {}
       },
       "function": {
         "shopFunction": {
-          "deploymentBucketName": "amplify-obsidian-dev-171243-deployment",
+          "deploymentBucketName": "amplify-obsydian-dev-171243-deployment",
           "s3Key": "amplify-builds/shopFunction-374c714b6c4147427868-build.zip"
         }
+      }
+    }
+  },
+  "stage": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-obsydian-stage-141039-authRole",
+      "UnauthRoleArn": "arn:aws:iam::370086842726:role/amplify-obsydian-stage-141039-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::370086842726:role/amplify-obsydian-stage-141039-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-obsydian-stage-141039-deployment",
+      "UnauthRoleName": "amplify-obsydian-stage-141039-unauthRole",
+      "StackName": "amplify-obsydian-stage-141039",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:370086842726:stack/amplify-obsydian-stage-141039/d028ff50-d30f-11eb-a76b-0a44c1f6bcd4",
+      "AmplifyAppId": "d6w7xsjh0y1k5"
+    },
+    "categories": {
+      "auth": {
+        "obsydian6e7be7bd": {},
+        "userPoolGroups": {}
       }
     }
   }

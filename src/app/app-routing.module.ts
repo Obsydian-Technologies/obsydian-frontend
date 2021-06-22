@@ -19,23 +19,57 @@ import { CreateShopComponent } from './shop/create-shop/create-shop.component';
 import { PublicProfileComponent } from './users/public-profile/public-profile.component';
 import { MyShopProductsListComponent } from './shop/my-shop/my-shop-products/my-shop-products-list/my-shop-products-list.component';
 import { ProductListingComponent } from './products/product-listing/product-listing.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { ConfirmCodeComponent } from './auth/confirm-code/confirm-code.component';
 
 const routes: Routes = [
+  {
+    path: 'landing',
+    component: LandingPageComponent,
+    data: { allowHeader: true, allowShopHeader: false }
+  },
   {
     path: 'auth',
     component: AuthComponent,
     canActivate: [UnauthGuard],
-    data: { allowHeader: true, allowShopHeader: false }
+    data: { allowHeader: true, allowShopHeader: false, allowMinHeader: true  }
+  },
+  {
+    path: 'auth/sign-in',
+    component: SignInComponent,
+    canActivate: [UnauthGuard],
+    data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true }
+  },
+  {
+    path: 'auth/sign-up',
+    component: SignUpComponent,
+    canActivate: [UnauthGuard],
+    data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true  }
+  },
+  {
+    path: 'auth/sign-up/:state',
+    component: SignUpComponent,
+    canActivate: [UnauthGuard],
+    data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true  }
+  },
+  {
+    path: 'auth/reset-password',
+    component: ResetPasswordComponent,
+    canActivate: [UnauthGuard],
+    data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true  }
+  },
+  {
+    path: 'auth/confirm-code',
+    component: ConfirmCodeComponent,
+    canActivate: [UnauthGuard],
+    data: { allowHeader: false, allowShopHeader: false, allowMinHeader: true  }
   },
   {
     path: 'auth/profile',
     component: ProfileComponent,
     canActivate: [AuthGuard],
-    data: { allowHeader: true, allowShopHeader: false }
-  },
-  {
-    path: 'landing',
-    component: LandingPageComponent,
     data: { allowHeader: true, allowShopHeader: false }
   },
   {

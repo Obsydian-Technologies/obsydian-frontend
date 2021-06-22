@@ -1,157 +1,139 @@
-<div *ngIf="loading">
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-  </div>
-<form class="app-form" *ngIf="!loading" [formGroup]="signupForm">
-  <div *ngIf="!CognitoUser">
-  <div class="text-center" style="padding-bottom: 12px;">
-      <strong>{{header}}</strong>
-  </div>
+<section class="obsydian-section">
+  <span class="obsydian-span">
+    <div class="obsydian-div">
+      <div class="obsydian-container">
+        <form class="app-form" [formGroup]="signupForm">
+          <div *ngIf="!CognitoUser">
+            <div class="text-center" style="padding-bottom: 12px;">
+              <strong>{{header}}</strong>
+            </div>
 
-  <table class="app-form-label" cellspacing="0">
-    <tr>
-      <td>
-        <mat-label>
-          <h2>Personal Details</h2>
-        </mat-label>
-        <mat-divider></mat-divider>
-      </td>
-    </tr>
-  </table>
+            <table class="app-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="app-full-width">
+                    <mat-label>First name</mat-label>
+                    <input matInput required name="FirstName" placeholder="First Name" type="text"
+                      formControlName="fname" autocomplete="given-name" />
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
 
-  <table class="app-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="app-full-width">
-          <mat-label>First name</mat-label>
-          <input matInput required name="FirstName" placeholder="First Name" type="text" formControlName="fname" autocomplete="given-name"/>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+            <table class="app-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="app-full-width">
+                    <mat-label>Last name</mat-label>
+                    <input matInput required name="LastName" placeholder="Last Name" type="text" formControlName="lname"
+                      autocomplete="family-name" />
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
 
-  <table class="app-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="app-full-width">
-          <mat-label>Last name</mat-label>
-          <input matInput required name="LastName" placeholder="Last Name" type="text" formControlName="lname" autocomplete="family-name"/>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+            <table class="app-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="app-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Ex. pat@example.com" required name="UserEmail" formControlName="email"
+                      autocomplete="email" />
+                    <mat-error *ngIf="emailInput?.hasError('email') && !emailInput?.hasError('required')">
+                      Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="emailInput?.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+            <table class="app-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="app-full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" required name="Password" placeholder="Password"
+                      [type]="hide ? 'password' : 'text'" formControlName="password" />
+                    <mat-icon matSuffix class="cursor-pointer" (click)="hide = !hide">
+                      {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="passwordInput?.hasError('minlength')">
+                      Password must contain at least 8 characters
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
 
-  <table class="app-form-label" cellspacing="0">
-    <tr>
-      <td>
-        <mat-label>
-          <h2>Sign In Information</h2>
-        </mat-label>
-        <mat-divider></mat-divider>
-      </td>
-    </tr>
-  </table>
-
-  <table class="app-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="app-full-width">
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="Ex. pat@example.com" required name="UserEmail" formControlName="email" autocomplete="email"/>
-          <mat-error *ngIf="emailInput?.hasError('email') && !emailInput?.hasError('required')">
-              Please enter a valid email address
-            </mat-error>
-            <mat-error *ngIf="emailInput?.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-  <table class="app-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="app-full-width">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" required name="Password" placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" />
-          <mat-icon matSuffix class="cursor-pointer" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          <mat-error *ngIf="passwordInput?.hasError('minlength')">
-              Password must contain at least 8 characters
-            </mat-error>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
-  <table class="app-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="app-full-width">
-          <mat-label>Mobile Number</mat-label>
-          <span matPrefix>{{countryCode}} &nbsp;</span>
-          <input matInput type="tel" matInput placeholder="5555551234" formControlName="phone" autocomplete="tel" required name="MobileNumber"/>
-          <!-- <mat-error *ngIf="phoneInput?.hasError('phone_number') && !phoneInput?.hasError('required')">
+            <table class="app-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="app-full-width">
+                    <mat-label>Mobile Number</mat-label>
+                    <span matPrefix>{{countryCode}} &nbsp;</span>
+                    <input matInput type="tel" matInput placeholder="5555551234" formControlName="phone"
+                      autocomplete="tel" required name="MobileNumber" />
+                    <!-- <mat-error *ngIf="phoneInput?.hasError('phone_number') && !phoneInput?.hasError('required')">
               Please enter a valid mobile number
             </mat-error> -->
-            <mat-error *ngIf="phoneInput?.hasError('required')">
-              Mobile Number is <strong>required</strong>
-            </mat-error>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+                    <mat-error *ngIf="phoneInput?.hasError('required')">
+                      Mobile Number is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
 
-  <table class="app-full-width" *ngIf="seller" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="app-full-width">
-          <mat-label>ABN</mat-label>
-          <input matInput formControlName="abn" name="Abn"/>
-          <mat-hint>Please enter without any spaces.</mat-hint>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+            <table class="app-full-width" *ngIf="seller" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="app-full-width">
+                    <mat-label>ABN</mat-label>
+                    <input matInput formControlName="abn" name="Abn" />
+                    <mat-hint>Please enter without any spaces.</mat-hint>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
 
-  <table class="app-form-label" cellspacing="0">
-    <tr class="text-center">
-      <td>
-        <button mat-stroked-button color="primary" (click)="close()">Close</button>
-        &nbsp;
-        <button [disabled]="shouldEnableSubmit()" [style.margin-top.px]="mobileQuery.matches ? 10 : 0" mat-raised-button color="primary" (click)="createAccount()">Create
-          Account</button>
-      </td>
-    </tr>
-    <p class="text-center"><button mat-button (click)="signIn()">Already have an account? <strong>Sign In</strong></button></p>
-    <p class="text-center" style="color: red;" *ngIf="errorMessage">{{errorMessage}}</p>
-  </table>
-  </div>
+            <table class="app-form-label" cellspacing="0">
+              <tr class="text-center">
+                <td>
+                  <button *ngIf="!loading" mat-stroked-button color="primary" routerLink="/landing">Close</button>
+                  &nbsp;
+                  <button [disabled]="shouldEnableSubmit() || loading" [style.margin-top.px]="mobileQuery.matches ? 10 : 0"
+                    mat-raised-button color="primary" (click)="createAccount()" [class.spinner]="loading"><span *ngIf="!loading">Create
+                    Account</span></button>
+                </td>
+              </tr>
+            </table>
 
-<div *ngIf="CognitoUser">
-    <div class="text-center">
-      <!-- Trancate the user email -->
-        <strong>We have sent a code by email to {{user.UserEmail}}. Enter it below to confirm your account.</strong>
+
+            <table cellspacing="0">
+              <tr>
+                <td>
+                  <p class="obsidian-small-text">By creating an account, you agree that you have read and
+                    accepted our <span class="obsidian-link" routerLink="/privacy"><strong>Conditions of Use</strong></span> and <span
+                      class="obsidian-link" routerLink="/privacy"><strong>Privacy</strong></span>
+                    Notice.<p>
+                </td>
+              </tr>
+            </table>
+
+            <table class="app-form-label" cellspacing="0">
+              <tr class="text-center">
+                <td>
+                  <p class="text-center"><span class="obsidian-small-text"
+                      >Already have an account? <span class="obsidian-link" routerLink="/auth/sign-in"><strong>Sign
+                          In</strong></span></span></p>
+                  <p class="text-center" style="color: red;" *ngIf="errorMessage">{{errorMessage}}</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </form>
       </div>
-
-  <table class="app-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="app-full-width">
-          <mat-label>Verification Code</mat-label>
-          <input matInput [(ngModel)]="verificationCode" required name="VerificationCode"/>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
-  <table class="app-form-label" cellspacing="0">
-      <tr>
-        <td>
-          <button [style.margin-top.px]="mobileQuery.matches ? 10 : 0" mat-raised-button color="primary" (click)="confirmAccount()">Confirm Account</button>
-        </td>
-      </tr>
-    </table>
-
-</div>
-
-</form>
-
+    </div>
+  </span>
+</section>

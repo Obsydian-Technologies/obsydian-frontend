@@ -1,35 +1,44 @@
-<ul>
-    <li class="mb-3" *ngFor="let category of rootCategoryList | keyvalue">
-      <label class="radio is-size-4" >
-        <input type="checkbox" value="{{category.key.slug}}" [checked]="category.value" (change)="filterRootCategory(category)">
-        <span class="pl-2">{{category.key.title}}</span>
-      </label>
-    </li>
-  </ul>
-  <hr/>
-  <ul>
-    <li class="mb-3" *ngFor="let category of categoryList | keyvalue">
-      <label class="checkbox is-size-4" >
-        <input type="checkbox" value="{{category.key.slug}}" [checked]="category.value" (change)="filterCategory(category)">
-        <span class="pl-2">{{category.key.title}}</span>
-      </label>
-    </li>
-  </ul>
-  <hr/>
-  <ul>
-    <li class="mb-3 color-item" *ngFor="let color of colorList | keyvalue">
-        <label class="checkbox is-size-4">
-          <input type="checkbox" value="{{color.key}}" [checked]="color.value" (change)="filterColor(color)">
-          <span [style.background-color]="color.key"></span>
-        </label>
-      </li>
-  </ul>
-  <hr/>
-  <ul>
-    <li class="mb-3" *ngFor="let price of priceList | keyvalue">
-      <label class="checkbox is-size-4" >
-        <input type="checkbox" value="{{price.key.slug}}" [checked]="price.value" (change)="filterPrice(price)">
-        <span class="pl-2">{{price.key.title}}</span>
-      </label>
-    </li>
-  </ul>
+<mat-list role="rootCategoryList">
+  <mat-list-item *ngFor="let category of rootCategoryList | keyvalue" role="listitem">
+    <label class="radio is-size-4">
+      <input type="checkbox" value="{{category.key.slug}}" [checked]="category.value"
+        (change)="filterRootCategory(category)">
+      <span class="pl-2">{{category.key.title}}</span>
+    </label>
+  </mat-list-item>
+</mat-list>
+
+<mat-divider></mat-divider>
+
+<mat-list role="categoryList">
+  <mat-list-item *ngFor="let category of categoryList | keyvalue" role="listitem">
+    <label class="checkbox is-size-4">
+      <input type="checkbox" value="{{category.key.slug}}" [checked]="category.value"
+        (change)="filterCategory(category)">
+      <span class="pl-2">{{category.key.title}}</span>
+    </label>
+  </mat-list-item>
+</mat-list>
+
+<mat-divider></mat-divider>
+
+<mat-list role="colorList">
+  <mat-list-item *ngFor="let color of colorList | keyvalue" role="listitem" style="display: inline-block;">
+    <label class="checkbox is-size-4">
+      <!-- <input type="checkbox" value="{{color.key}}" [checked]="color.value" (change)="filterColor(color)"> -->
+      <mat-checkbox [color]="color.key" (change)="filterColor(color)" [checked]="color.value" value="{{color.key}}">
+      </mat-checkbox>
+    </label>
+  </mat-list-item>
+</mat-list>
+
+<mat-divider></mat-divider>
+
+<mat-list role="priceList">
+  <mat-list-item *ngFor="let price of priceList | keyvalue" role="listitem">
+    <label class="checkbox is-size-4">
+      <input type="checkbox" value="{{price.key.slug}}" [checked]="price.value" (change)="filterPrice(price)">
+      <span class="pl-2">{{price.key.title}}</span>
+    </label>
+  </mat-list-item>
+</mat-list>

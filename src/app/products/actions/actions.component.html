@@ -1,19 +1,18 @@
-<span class="obsidian-actions-span">
-  <span class="obsidian-actions-div">
-    <span class="obsidian-actions-container">
-      <span class="buttons has-addons is-centered">
-        <button mat-stroked-button color="primary" (click)="viewProduct()">
-          <mat-icon>visibility</mat-icon> <span style="font-size: 12px;"> View</span>
+<span class="obsydian-actions-span">
+  <span class="obsydian-actions-div">
+    <span class="obsydian-actions-container">
+      <span>
+        <!-- <button style="display: inline-block; margin-right: 3px;" mat-stroked-button color="primary"
+          (click)="viewProduct()">
+          <mat-icon>visibility</mat-icon> <span style="font-size: 10px;"> View</span>
+        </button> -->
+        <button style="display: inline-block;" mat-stroked-button color="primary"
+          (click)="addProductToCart()">
+          <mat-icon>shopping_cart</mat-icon> <span style="font-size: 10px;"> Add to cart</span>
         </button>
         &nbsp;
-
-        <button mat-stroked-button color="primary" (click)="addProductToCart()">
-          <mat-icon>shopping_cart</mat-icon> <span style="font-size: 12px;"> Add to cart</span>
-        </button>
-        &nbsp;
-
-        <button mat-stroked-button color="primary" (click)="buyProduct()">
-          <mat-icon>paid</mat-icon> <span style="font-size: 12px;"> Buy!</span>
+        <button style="display: inline-block;" mat-stroked-button color="primary" (click)="buyProduct()">
+          <mat-icon>paid</mat-icon> <span style="font-size: 10px;"> Buy!</span>
         </button>
       </span>
     </span>

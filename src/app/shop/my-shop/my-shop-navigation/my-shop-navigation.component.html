@@ -14,7 +14,7 @@
       </mat-menu>
       <button [style.margin.left]="mobileQuery.matches ? 15 : 0" style="width: 166px; margin-right: 10px;"
         mat-icon-button (click)="goToLandingPage()">
-        <span>Obsidian</span>
+        <mat-icon svgIcon="obs_logo_white" style="z-index: 6; width: 80%;"></mat-icon>
       </button>
       <button *ngIf="!mobileQuery.matches" mat-button (click)="goToDashBoard()">
         <mat-icon>dashboard</mat-icon> Dashboard

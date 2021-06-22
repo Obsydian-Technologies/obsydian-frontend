@@ -1,3 +1,3 @@
 export class Resource {
-   Id: string | undefined;
+   id: string | undefined;
 }

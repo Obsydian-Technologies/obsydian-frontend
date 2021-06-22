@@ -3,6 +3,7 @@
 </div>
 <app-navigation *ngIf="loadApp && allowHeader"></app-navigation>
 <app-my-shop-navigation *ngIf="loadApp && allowShopHeader"></app-my-shop-navigation>
+<app-min-navigation *ngIf="loadApp && allowMinHeader"></app-min-navigation>
 <div style="max-width:100rem;margin-left:auto;margin-right: auto">
   <router-outlet *ngIf="loadApp" ></router-outlet>
 </div>

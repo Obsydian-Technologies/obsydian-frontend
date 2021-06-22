@@ -25,22 +25,29 @@ export class ProductListingComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private router: Router, changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    public auth: AuthService){
+    public auth: AuthService) {
 
+  }
+
+  onChangeFilters(selectedFilters: string) {
+    // this.cosmicService.getProductsByQuery(selectedFilters).subscribe(products => {
+      // this.productList = products ? products : [];
+      this.productList  = this.productList ;
+    // });
   }
 
   // ngOnInit(): void {
 
-    // this.userService.user$.subscribe(user => {
-    //   this.user = user;
-    // });
-    // this.cosmicService.getProducts().subscribe(products => (this.productList = products));
+  // this.userService.user$.subscribe(user => {
+  //   this.user = user;
+  // });
+  // this.cosmicService.getProducts().subscribe(products => (this.productList = products));
 
   // }
 
   async ngOnInit() {
 
-    let obj = { _id : "dssd", slug : "sds", title : "100", price : "100"}
+    let obj = { _id: "dssd", slug: "sds", title: "Luc Belaire Light Up Fantôme Provence Sparkling Rosé Rare NV (6 Bottle Case)", metadata: { image: { url: "https://picsum.photos/300" } , price: "100"  } }
 
     let testProduct = new Product(obj)
 
@@ -52,25 +59,25 @@ export class ProductListingComponent implements OnInit {
       this.loading = false;
     }, 50);
     await this.reloadComponent().then(response => {
-      this.productList = [ testProduct, testProduct2, testProduct3 ];
+      this.productList = [testProduct, testProduct2, testProduct3];
     })
   }
 
   async reloadComponent() {
     await this.auth.getCurrentUserDetails().then(async data => {
-      this.user =  data;
+      this.user = data;
       await Auth.currentAuthenticatedUser().then(async (response: any) => {
         this.profile = response;
         // if ( this.profile.attributes['picture'] ) {
         // }
       })
-      .catch(error => {
-            console.log(error);
-      });
-    })
-    .catch(error => {
+        .catch(error => {
           console.log(error);
-    });
+        });
+    })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
 }

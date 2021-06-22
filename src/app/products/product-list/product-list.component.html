@@ -1,0 +1,18 @@
+<section *ngIf="productList" class="obsydian-product-listing-section">
+  <span *ngFor="let product of productList" class="obsydian-product-listing-span"
+    style="display: inline-block; max-width: 20rem;">
+    <div class="obsydian-product-listing-div">
+      <div class="obsydian-product-listing-container">
+        <ng-container>
+          <div class="text-center">
+            <img src="{{product.image}}" class="image" />
+            <div class="obsidian-link">
+              <span>{{product.title}} ${{product.price}}</span>
+            </div>
+            <app-actions [product]="product"></app-actions>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </span>
+</section>

@@ -15,17 +15,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     return Auth.currentAuthenticatedUser().then(() => { return true; })
       .catch(() => {
-        this._router.navigate(['/landing']);
-
-        const dialogRef = this.dialog.open(AuthComponent, {
-          width: '500px',
-          data: { header: 'Sign In', authFlow: 'Sign In' },
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-
-        });
-
+        this._router.navigate(['/auth/sign-in']);
         return false;
       });
   }

@@ -90,6 +90,8 @@ import { CategoriesComponent } from './products/categories/categories.component'
 import { ActionsComponent } from './products/actions/actions.component';
 import { ProductListingComponent } from './products/product-listing/product-listing.component';
 import { FiltersComponent } from './products/filters/filters.component';
+import { MinNavigationComponent } from './navigation/min-navigation/min-navigation.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
 /* Configure Amplify resources */
 Amplify.configure(awsconfig);
 
@@ -128,7 +130,9 @@ Amplify.configure(awsconfig);
     CategoriesComponent,
     ActionsComponent,
     ProductListingComponent,
-    FiltersComponent
+    FiltersComponent,
+    MinNavigationComponent,
+    ProductListComponent
   ],
   entryComponents: [AuthComponent, SignUpComponent, SignInComponent, MyShopProductsAddComponent, MyShopProductsEditComponent],
   imports: [
